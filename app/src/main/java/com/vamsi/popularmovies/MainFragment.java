@@ -1,11 +1,15 @@
 package com.vamsi.popularmovies;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +19,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,6 +72,30 @@ public class MainFragment extends Fragment {
         mMovieAdapter = new MoviesAdapter(getActivity(),movies);
 
         moviesView.setAdapter(mMovieAdapter);
+
+        moviesView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                ImageView ivPoster = (ImageView) ((LinearLayout) view).getChildAt(0);
+
+                Intent intent = new Intent(getContext(),Details.class);
+
+                intent.putExtra("movie",movies.get(i));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) getContext(), ivPoster, "movie");
+                    getContext().startActivity(intent, options.toBundle());
+
+                } else {
+
+
+                    getContext().startActivity(intent);
+                }
+
+            }
+        });
 
         return view;
     }

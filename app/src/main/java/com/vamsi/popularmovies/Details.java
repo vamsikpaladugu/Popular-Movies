@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -43,6 +44,31 @@ public class Details extends AppCompatActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        supportFinishAfterTransition();
+        super.onBackPressed();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+        if (item.getItemId() == android.R.id.home){
+
+            supportFinishAfterTransition();
+            return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
 
     }
 
@@ -75,6 +101,7 @@ public class Details extends AppCompatActivity {
             TextView tvReleasedate = (TextView) rootView.findViewById(R.id.tvfdReleasedate);
             TextView tvRating = (TextView) rootView.findViewById(R.id.tvfdRating);
             TextView tvTitle = (TextView) rootView.findViewById(R.id.tvfdTitle);
+            RatingBar bar = (RatingBar) rootView.findViewById(R.id.ratingbar);
 
 
             Picasso.with(getContext()).load(Globels.baseImageUrlHD+""+movie.getBackdrop_path()).into(ivBackposter);
@@ -82,8 +109,10 @@ public class Details extends AppCompatActivity {
 
             tvTitle.setText(""+movie.getOriginal_title());
             tvOverview.setText(""+movie.getOverview());
-            tvReleasedate.setText(""+movie.getRelease_date());
+            tvReleasedate.setText("Released on "+movie.getRelease_date());
             tvRating.setText(""+movie.getVote_average());
+
+            bar.setRating(Float.parseFloat(""+movie.getVote_average()));
 
 
             return rootView;

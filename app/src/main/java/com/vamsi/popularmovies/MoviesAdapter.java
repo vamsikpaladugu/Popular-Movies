@@ -1,7 +1,7 @@
 package com.vamsi.popularmovies;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Point;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +19,18 @@ import java.util.List;
  */
 public class MoviesAdapter extends ArrayAdapter<Movie> {
 
+    Context context;
+
     public MoviesAdapter(Context context, List<Movie> movies) {
+
         super(context, 0, movies);
+        this.context = context;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        final Movie movie = getItem(position);
+        Movie movie = getItem(position);
 
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
@@ -35,24 +39,9 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
 
         // Lookup view for data population
         ImageView ivPoster = (ImageView) convertView.findViewById(R.id.ivMovie);
-
-        ivPoster.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getContext(),Details.class);
-
-                intent.putExtra("movie",movie);
-
-                intent.putExtra("bp",""+movie.getBackdrop_path());
-                intent.putExtra("p",""+movie.getPoster_path());
-                intent.putExtra("overview",""+movie.getOverview());
-                intent.putExtra("release",""+movie.getRelease_date());
-                intent.putExtra("rating",""+movie.getVote_average());
-                getContext().startActivity(intent);
-
-            }
-        });
+        ivPoster.getLayoutParams().width = scr()/2;
+        ivPoster.getLayoutParams().height = (277/185)*scr()/2;
+        //ivPoster.requestLayout();
 
         Picasso.with(getContext()).load(Globels.baseImageUrl+""+movie.getPoster_path()).into(ivPoster);
 
@@ -60,10 +49,14 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
     }
 
 
-   /* public void scr(){
-        WindowManager windowManager = (WindowManager)getContext().getSystemService(getContext().WINDOW_SERVICE);
-        int width = windowManager.getDefaultDisplay().getWidth();
+    public int scr(){
 
-    }*/
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+
+        Point size = new Point();
+        display.getSize(size);
+        return size.x;
+    }
 
 }

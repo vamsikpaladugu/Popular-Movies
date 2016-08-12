@@ -5,11 +5,11 @@ package com.vamsi.popularmovies;
  */
 public class Globels {
 
-    public static String apiKey = ""; //repleace with your own
+    public static String apiKey = "7aa53c96355988c41aa92ff966405dea"; //repleace with your own
 
     public static String baseURl = "http://api.themoviedb.org/3/movie/";
 
-    public static String baseImageUrl = "http://image.tmdb.org/t/p/w342/";
+    public static String baseImageUrl = "http://image.tmdb.org/t/p/w185/";
 
     public static String baseImageUrlHD = "http://image.tmdb.org/t/p/w500/";
 
