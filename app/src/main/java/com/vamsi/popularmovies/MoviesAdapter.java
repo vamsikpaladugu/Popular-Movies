@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 /**
@@ -34,28 +32,21 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.single_movie, parent, false);
         }
 
+        ImageView ivPoster = (ImageView) convertView;
+
         // Lookup view for data population
 
-        ImageView ivPoster = (ImageView) convertView.findViewById(R.id.ivMovie);
-        //ivPoster.getLayoutParams().width = scr()/2;
-        //ivPoster.getLayoutParams().height = (277/185)*scr()/2;
-        //ivPoster.requestLayout();//.resize(scr()/2,(277/185)*scr()/2)
+        ivPoster.getLayoutParams().width = scr()/2;
+        ivPoster.getLayoutParams().height = 3*scr()/4;
+        ivPoster.requestLayout();
 
-        Picasso.with(getContext()).load(Globels.baseImageUrl+""+movie.getPoster_path()).resize(scr()/2,(277/185)*scr()/2).into(ivPoster);
+        Picasso.with(getContext()).load(Globels.baseImageUrl+""+movie.getPoster_path()).into(ivPoster);
 
         return convertView;
     }
 
 
     public int scr(){
-
-        /*int width= context.getResources().getDisplayMetrics().widthPixels;
-
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-
-        Point size = new Point();
-        display.getSize(size);*/
         return context.getResources().getDisplayMetrics().widthPixels;
     }
 

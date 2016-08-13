@@ -99,7 +99,6 @@ public class Details extends AppCompatActivity {
             ImageView ivPoster = (ImageView) rootView.findViewById(R.id.ivfdPoster);
             TextView tvOverview = (TextView) rootView.findViewById(R.id.tvfdOverview);
             TextView tvReleasedate = (TextView) rootView.findViewById(R.id.tvfdReleasedate);
-            TextView tvRating = (TextView) rootView.findViewById(R.id.tvfdRating);
             TextView tvTitle = (TextView) rootView.findViewById(R.id.tvfdTitle);
             RatingBar bar = (RatingBar) rootView.findViewById(R.id.ratingbar);
 
@@ -110,7 +109,6 @@ public class Details extends AppCompatActivity {
             tvTitle.setText(""+movie.getOriginal_title());
             tvOverview.setText(""+movie.getOverview());
             tvReleasedate.setText("Released on "+movie.getRelease_date());
-            tvRating.setText(""+movie.getVote_average());
 
             bar.setRating(Float.parseFloat(""+movie.getVote_average()));
 

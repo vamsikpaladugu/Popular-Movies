@@ -40,7 +40,7 @@
                     <ImageView
                         android:id="@+id/ivfdPoster"
                         android:layout_width="100dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="150dp"
                         android:layout_margin="6dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitStart"
@@ -63,6 +63,18 @@
                 android:textStyle="bold"
                 android:textColor="#000"
                 android:textSize="18sp" />
+
+            <RatingBar
+                android:id="@+id/ratingbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rating="4.5"
+                android:numStars="10"
+                android:stepSize="0.01"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="12dp"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"/>
 
             <TextView
                 android:id="@+id/tvfdOverview"
@@ -89,53 +101,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardElevation="6dp"
-        android:layout_gravity="center_horizontal">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="9dp"
-            android:orientation="horizontal">
-
-            <RatingBar
-                android:id="@+id/ratingbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:rating="4.5"
-                android:numStars="10"
-                android:stepSize="0.01"
-                style="@style/Base.Widget.AppCompat.RatingBar.Small"/>
-
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:padding="9dp"
-                android:visibility="gone"
-                android:src="@drawable/ic_action_star_10"/>
-
-            <TextView
-                android:id="@+id/tvfdRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:visibility="gone"
-                android:layout_gravity="center_vertical"
-                android:textSize="18sp"
-                android:text="9.3" />
-
-
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-
 
 </LinearLayout>

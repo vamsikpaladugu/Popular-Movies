@@ -8,6 +8,8 @@
         android:id="@+id/gvMovies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="auto_fit" />
+        android:verticalSpacing="6dp"
+        android:horizontalSpacing="6dp"
+        android:numColumns="2" />
 
 </RelativeLayout>

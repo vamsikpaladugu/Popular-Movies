@@ -77,7 +77,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                ImageView ivPoster = (ImageView) ((LinearLayout) view).getChildAt(0);
+                //ImageView ivPoster = (ImageView) ((LinearLayout) view).getChildAt(0);
 
                 Intent intent = new Intent(getContext(),Details.class);
 
@@ -85,7 +85,7 @@ public class MainFragment extends Fragment {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) getContext(), ivPoster, "movie");
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) getContext(), view, "movie");
                     getContext().startActivity(intent, options.toBundle());
 
                 } else {
@@ -114,7 +114,7 @@ public class MainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.menu_main, menu);
-
+if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
         menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)).setChecked(true);
 
     }
