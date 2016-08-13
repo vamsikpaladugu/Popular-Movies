@@ -1,12 +1,9 @@
 package com.vamsi.popularmovies;
 
 import android.content.Context;
-import android.graphics.Point;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
@@ -38,12 +35,13 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
         }
 
         // Lookup view for data population
-        ImageView ivPoster = (ImageView) convertView.findViewById(R.id.ivMovie);
-        ivPoster.getLayoutParams().width = scr()/2;
-        ivPoster.getLayoutParams().height = (277/185)*scr()/2;
-        //ivPoster.requestLayout();
 
-        Picasso.with(getContext()).load(Globels.baseImageUrl+""+movie.getPoster_path()).into(ivPoster);
+        ImageView ivPoster = (ImageView) convertView.findViewById(R.id.ivMovie);
+        //ivPoster.getLayoutParams().width = scr()/2;
+        //ivPoster.getLayoutParams().height = (277/185)*scr()/2;
+        //ivPoster.requestLayout();//.resize(scr()/2,(277/185)*scr()/2)
+
+        Picasso.with(getContext()).load(Globels.baseImageUrl+""+movie.getPoster_path()).resize(scr()/2,(277/185)*scr()/2).into(ivPoster);
 
         return convertView;
     }
@@ -51,12 +49,14 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
 
     public int scr(){
 
+        /*int width= context.getResources().getDisplayMetrics().widthPixels;
+
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
 
         Point size = new Point();
-        display.getSize(size);
-        return size.x;
+        display.getSize(size);*/
+        return context.getResources().getDisplayMetrics().widthPixels;
     }
 
 }
