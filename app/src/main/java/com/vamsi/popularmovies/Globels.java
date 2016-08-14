@@ -5,7 +5,7 @@ package com.vamsi.popularmovies;
  */
 public class Globels {
 
-    public static String apiKey = "7aa53c96355988c41aa92ff966405dea"; //repleace with your own
+    public static String apiKey = ""; //repleace with your own
 
     public static String baseURl = "http://api.themoviedb.org/3/movie/";
 

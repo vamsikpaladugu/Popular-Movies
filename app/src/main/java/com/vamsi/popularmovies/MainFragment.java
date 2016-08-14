@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
@@ -21,8 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +33,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -54,6 +51,7 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         sharedpreferences = getActivity().getSharedPreferences("mypref", Context.MODE_PRIVATE);
@@ -65,7 +63,7 @@ public class MainFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        moviesView = (GridView) view.findViewById(R.id.gvMovies);
+        moviesView = (GridView) view.findViewById(R.id.gvfmMovies);
 
         movies = new ArrayList<>();
 
@@ -77,10 +75,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                //ImageView ivPoster = (ImageView) ((LinearLayout) view).getChildAt(0);
-
                 Intent intent = new Intent(getContext(),Details.class);
-
                 intent.putExtra("movie",movies.get(i));
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -89,8 +84,6 @@ public class MainFragment extends Fragment {
                     getContext().startActivity(intent, options.toBundle());
 
                 } else {
-
-
                     getContext().startActivity(intent);
                 }
 
@@ -105,7 +98,6 @@ public class MainFragment extends Fragment {
     public void onStart() {
 
         updateMovies();
-
         super.onStart();
     }
 
@@ -114,8 +106,11 @@ public class MainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.menu_main, menu);
-if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
-        menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)).setChecked(true);
+
+        MenuItem item = menu.findItem(sharedpreferences.getInt("sortby", R.id.popular));
+
+        if (item !=null)
+            item.setChecked(true);
 
     }
 
@@ -161,7 +156,7 @@ if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
 
     class FatchMovies extends AsyncTask<String,Void,ArrayList<Movie>> {
 
-        String TAG = FatchMovies.class.getSimpleName();
+        //String TAG = FatchMovies.class.getSimpleName();
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -181,14 +176,12 @@ if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
         @Override
         protected ArrayList<Movie> doInBackground(String... params) {
 
-            String sortby = params[0]; //"top_rated";//"popular";//top_rated
+            String sortby = params[0]; //popular (or) top_rated
 
             try {
 
 
                 String API_PARAM = "api_key";
-
-                //url for openweathermap.org
 
                 Uri buildUri = Uri.parse(Globels.baseURl + sortby + "?").buildUpon()
                         .appendQueryParameter(API_PARAM, Globels.apiKey)
@@ -197,13 +190,11 @@ if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
                 URL url = new URL(buildUri.toString());
 
 
-                Log.v(TAG, buildUri.toString());
+                //Log.v(TAG, buildUri.toString());
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
-
-                //read inputstream into string
 
                 InputStream inputStream = urlConnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
@@ -225,35 +216,29 @@ if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
 
                 forecastJsonStr = buffer.toString();
 
+                //Log.v(TAG, forecastJsonStr);
 
-                Log.v(TAG, forecastJsonStr);
-
-                return getMovie(forecastJsonStr);
+                return getMovies(forecastJsonStr);
 
             } catch (IOException e) {
-                Log.e(TAG, "Error ", e);
-
+                //Log.e(TAG, "Error ", e);
                 return null;
+
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
 
-                if (urlConnection != null) {
-
+                if (urlConnection != null)
                     urlConnection.disconnect();
 
-                }
                 if (reader != null) {
 
                     try {
                         reader.close();
                     } catch (IOException e) {
-                        Log.e(TAG, "Error closing stream", e);
+                        //Log.e(TAG, "Error closing stream", e);
                     }
-
                 }
-
-
             }
 
 
@@ -261,7 +246,7 @@ if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
 
         }
 
-        public ArrayList<Movie> getMovie(String json) throws JSONException {
+        public ArrayList<Movie> getMovies(String json) throws JSONException {
 
             ArrayList<Movie> movies = new ArrayList<>();
 
@@ -271,14 +256,9 @@ if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
 
             for (int i=0;i<array.length();i++){
 
-                Movie movie = new Movie(array.getJSONObject(i));
-
-                Log.v(TAG,""+array.getJSONObject(i).toString());
-
-                movies.add(movie);
+                movies.add(new Movie(array.getJSONObject(i)));
 
             }
-
 
             return movies;
 
@@ -297,9 +277,14 @@ if (menu.findItem(sharedpreferences.getInt("sortby", R.id.popular)) !=null)
         else
             sortby = "top_rated";
 
-        FatchMovies weatherTask = new FatchMovies();
-        weatherTask.execute(sortby);
+        if (((MainActivity)getActivity()).isOnline()) {
+            FatchMovies weatherTask = new FatchMovies();
+            weatherTask.execute(sortby);
+        }else{
 
+            Toast.makeText(getActivity(), "No Internet! try again", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
 

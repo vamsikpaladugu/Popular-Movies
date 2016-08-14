@@ -57,9 +57,6 @@ public class Details extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
         if (item.getItemId() == android.R.id.home){
 
@@ -97,9 +94,12 @@ public class Details extends AppCompatActivity {
 
             ImageView ivBackposter = (ImageView) rootView.findViewById(R.id.ivfdBackposter);
             ImageView ivPoster = (ImageView) rootView.findViewById(R.id.ivfdPoster);
+
             TextView tvOverview = (TextView) rootView.findViewById(R.id.tvfdOverview);
             TextView tvReleasedate = (TextView) rootView.findViewById(R.id.tvfdReleasedate);
             TextView tvTitle = (TextView) rootView.findViewById(R.id.tvfdTitle);
+            TextView tvRating = (TextView) rootView.findViewById(R.id.tvfdRating);
+
             RatingBar bar = (RatingBar) rootView.findViewById(R.id.ratingbar);
 
 
@@ -108,6 +108,7 @@ public class Details extends AppCompatActivity {
 
             tvTitle.setText(""+movie.getOriginal_title());
             tvOverview.setText(""+movie.getOverview());
+            tvRating.setText("("+movie.getVote_average()+")");
             tvReleasedate.setText("Released on "+movie.getRelease_date());
 
             bar.setRating(Float.parseFloat(""+movie.getVote_average()));

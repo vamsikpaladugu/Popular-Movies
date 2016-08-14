@@ -34,10 +34,9 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
 
         ImageView ivPoster = (ImageView) convertView;
 
-        // Lookup view for data population
-
-        ivPoster.getLayoutParams().width = scr()/2;
-        ivPoster.getLayoutParams().height = 3*scr()/4;
+        // scale up imageview to fit the screen
+        ivPoster.getLayoutParams().width = screenWidth()/2;
+        ivPoster.getLayoutParams().height = 3*screenWidth()/4;
         ivPoster.requestLayout();
 
         Picasso.with(getContext()).load(Globels.baseImageUrl+""+movie.getPoster_path()).into(ivPoster);
@@ -46,7 +45,7 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
     }
 
 
-    public int scr(){
+    public int screenWidth(){
         return context.getResources().getDisplayMetrics().widthPixels;
     }
 

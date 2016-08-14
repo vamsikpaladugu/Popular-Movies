@@ -31,9 +31,6 @@ public class Movie implements Parcelable{
         }
     }
 
-    public Movie(){
-
-    }
 
     protected Movie(Parcel in) {
         backdrop_path = in.readString();
@@ -126,7 +123,6 @@ public class Movie implements Parcelable{
             return new Movie[size];
         }
     };
-
 
 
 }
