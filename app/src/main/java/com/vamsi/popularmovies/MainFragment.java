@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -25,8 +24,8 @@ import java.util.ArrayList;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.vamsi.popularmovies.Data.MoviesContract.FavoriteEntry;
-import com.vamsi.popularmovies.Modal.Movie;
+import com.vamsi.popularmovies.data.MoviesContract.FavoriteEntry;
+import com.vamsi.popularmovies.modal.Movie;
 
 /**
  * A placeholder fragment containing a simple view.

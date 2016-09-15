@@ -35,7 +35,7 @@
 
         <provider
             android:authorities="com.vamsi.popularmovies"
-            android:name=".Data.FavoriteProvider"/>
+            android:name=".data.FavoriteProvider"/>
 
 
     </application>

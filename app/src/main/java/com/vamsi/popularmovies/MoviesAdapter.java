@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
-import com.vamsi.popularmovies.Modal.Movie;
+import com.vamsi.popularmovies.modal.Movie;
 
 import java.util.List;
 

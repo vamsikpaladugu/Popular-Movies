@@ -1,8 +1,7 @@
-package com.vamsi.popularmovies.Modal;
+package com.vamsi.popularmovies.modal;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;

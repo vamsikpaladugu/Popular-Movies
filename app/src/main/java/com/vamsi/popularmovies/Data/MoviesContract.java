@@ -1,7 +1,6 @@
-package com.vamsi.popularmovies.Data;
+package com.vamsi.popularmovies.data;
 
 import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 

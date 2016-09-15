@@ -34,9 +34,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vamsi.popularmovies.Data.MoviesContract.FavoriteEntry;
-import com.vamsi.popularmovies.Modal.Movie;
-import com.vamsi.popularmovies.Modal.Trailer;
+import com.vamsi.popularmovies.data.MoviesContract.FavoriteEntry;
+import com.vamsi.popularmovies.modal.Movie;
+import com.vamsi.popularmovies.modal.Trailer;
 
 import at.blogc.android.views.ExpandableTextView;
 

@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.vamsi.popularmovies.Modal.Trailer;
+import com.vamsi.popularmovies.modal.Trailer;
 
 import java.util.List;
 

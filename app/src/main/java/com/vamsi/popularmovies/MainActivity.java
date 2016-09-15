@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.vamsi.popularmovies.Modal.Movie;
+import com.vamsi.popularmovies.modal.Movie;
 
 public class MainActivity extends AppCompatActivity implements MainFragment.OnMovieSelected {
 

@@ -1,4 +1,4 @@
-package com.vamsi.popularmovies.Modal;
+package com.vamsi.popularmovies.modal;
 
 import org.json.JSONException;
 import org.json.JSONObject;
