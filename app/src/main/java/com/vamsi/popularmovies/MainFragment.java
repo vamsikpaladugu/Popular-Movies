@@ -143,8 +143,8 @@ public class MainFragment extends Fragment {
                     editor.commit();
                 }
 
+                selecteditemPosition=0;
                 updateMovies();
-
                 return true;
 
 
@@ -158,8 +158,8 @@ public class MainFragment extends Fragment {
                     editor.commit();
                 }
 
+                selecteditemPosition=0;
                 updateMovies();
-
                 return true;
 
 
@@ -173,8 +173,8 @@ public class MainFragment extends Fragment {
                     editor.commit();
                 }
 
+                selecteditemPosition=0;
                 updateMovies();
-
                 return true;
 
 
