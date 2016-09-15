@@ -1,11 +1,15 @@
 package com.vamsi.popularmovies;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 /**
  * Created by Vamsi on 03-08-2016.
  */
 public class Globals {
 
-    public static String apiKey = ""; //repleace with your own
+    public static String apiKey = ""; //replace with your own
 
     public static String baseImageUrl = "http://image.tmdb.org/t/p/w342/";//342//500//185
 
@@ -20,6 +24,14 @@ public class Globals {
     public static String movies = "http://api.themoviedb.org/3/movie/%s?api_key=%s";
 
     public static String youtube_url = "http://www.youtube.com/watch?v=";
+
+
+    public static boolean isOnline(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
 
     /*refrence urls
 

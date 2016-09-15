@@ -126,9 +126,19 @@ public class DetailsFragment extends Fragment {
         rvTrailers.setLayoutManager(tlayoutManager);
 
 
-        //fatch the movie Trailers and Reviews with loopj library
-        fatahTrailers(movie.getId());
-        fetchReviews(movie.getId());
+        if (Globals.isOnline(context)) {
+
+            //fatch the movie Trailers and Reviews with loopj library
+            fatahTrailers(movie.getId());
+            fetchReviews(movie.getId());
+
+        } else {
+
+            Toast.makeText(getActivity(), "No Internet! try again", Toast.LENGTH_SHORT).show();
+
+        }
+
+
 
         ivFavorite.setImageResource(isMovieFavorite(movie.getId()));
 
@@ -274,8 +284,6 @@ public class DetailsFragment extends Fragment {
 
             @Override
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
-
-                Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
 
             }
         });

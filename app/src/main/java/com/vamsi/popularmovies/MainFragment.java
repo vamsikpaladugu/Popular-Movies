@@ -42,6 +42,8 @@ public class MainFragment extends Fragment {
 
     SharedPreferences sharedpreferences;
 
+    Context context;
+
     public MainFragment() {
     }
 
@@ -51,6 +53,7 @@ public class MainFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        context = getActivity();
         sharedpreferences = getActivity().getSharedPreferences("mypref", Context.MODE_PRIVATE);
 
     }
@@ -230,6 +233,10 @@ public class MainFragment extends Fragment {
 
     private void updateMovies() {
 
+        if (mMovieAdapter!=null){
+            mMovieAdapter.clear();
+        }
+
         String sortby = "";
         int id = sharedpreferences.getInt("sortby", R.id.popular);
 
@@ -241,7 +248,7 @@ public class MainFragment extends Fragment {
             else if (id == R.id.top_rated)
                 sortby = "top_rated";
 
-            if (((MainActivity) getActivity()).isOnline()) {
+            if (Globals.isOnline(context)) {
 
                 fatchMovies(sortby);
 
