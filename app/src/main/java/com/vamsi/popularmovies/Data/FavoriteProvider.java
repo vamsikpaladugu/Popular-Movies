@@ -1,4 +1,4 @@
-package com.vamsi.popularmovies.data;
+package com.vamsi.popularmovies.Data;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.widget.Toast;
 
-import com.vamsi.popularmovies.data.MoviesContract.FavoriteEntry;
+import com.vamsi.popularmovies.Data.MoviesContract.FavoriteEntry;
 import com.vamsi.popularmovies.R;
 
 /**

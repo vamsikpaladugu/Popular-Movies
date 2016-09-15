@@ -1,4 +1,4 @@
-package com.vamsi.popularmovies.data;
+package com.vamsi.popularmovies.Data;
 
 import android.content.ContentResolver;
 import android.net.Uri;

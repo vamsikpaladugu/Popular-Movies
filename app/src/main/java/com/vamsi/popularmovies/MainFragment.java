@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.vamsi.popularmovies.data.MoviesContract.FavoriteEntry;
+import com.vamsi.popularmovies.Data.MoviesContract.FavoriteEntry;
 import com.vamsi.popularmovies.modal.Movie;
 
 /**

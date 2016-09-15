@@ -1,9 +1,9 @@
-package com.vamsi.popularmovies.data;
+package com.vamsi.popularmovies.Data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.vamsi.popularmovies.data.MoviesContract.FavoriteEntry;
+import com.vamsi.popularmovies.Data.MoviesContract.FavoriteEntry;
 /**
  * Created by Vamsi Smart on 12-09-2016.
  */
