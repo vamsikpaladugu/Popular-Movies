@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" >
         <item
             android:id="@+id/popular"
-            android:title="@string/menu_popular" />
+            android:checked="true"
+            android:icon ="@drawable/selected_item"
+            android:title="@string/menu_popular"/>
         <item
             android:id="@+id/top_rated"
-            android:title="@string/menu_top_rated" />
+            android:title="@string/menu_top_rated"
+            android:icon="@drawable/selected_item"/>
+
+        <item
+            android:id="@+id/favorite"
+            android:title="@string/menu_favorite"
+            android:icon="@drawable/selected_item" />
+
     </group>
 </menu>

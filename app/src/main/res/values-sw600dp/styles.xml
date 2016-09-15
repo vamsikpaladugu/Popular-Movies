@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="myGride">
+
+        <item name="android:choiceMode">singleChoice</item>
+
+    </style>
+
+    <style name="single_movie">
+        <item name="android:background">@drawable/selected_item</item>
+    </style>
+
+</resources>

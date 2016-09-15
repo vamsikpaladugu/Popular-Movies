@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".Details"
+            android:name=".DetailsActivity"
             android:label="@string/title_activity_details"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -32,6 +32,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.vamsi.popularmovies.MainActivity" />
         </activity>
+
+        <provider
+            android:authorities="com.vamsi.popularmovies"
+            android:name=".Data.FavoriteProvider"/>
+
 
     </application>
 

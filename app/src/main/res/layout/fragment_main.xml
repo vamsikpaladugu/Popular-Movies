@@ -7,10 +7,19 @@
 
     <GridView
         android:id="@+id/gvfmMovies"
+        style="@style/myGride"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:verticalSpacing="6dp"
-        android:horizontalSpacing="6dp"
         android:numColumns="2" />
+
+    <TextView
+        android:id="@+id/tvfmEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_gridview"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:visibility="gone" />
 
 </FrameLayout>

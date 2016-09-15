@@ -4,4 +4,13 @@
     <string name="title_activity_details">Movie Details</string>
     <string name="menu_popular">Popular</string>
     <string name="menu_top_rated">Top Rated</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="empty_gridview">No data available!</string>
+
+    <string name="favorite_exists">This Movie is already in favorites</string>
+    <string name="reviews_title">Reviews</string>
+    <string name="is_author"> (Author)</string>
+    <string name="read_more">Read more</string>
+    <string name="action_share">Share</string>
+
 </resources>
