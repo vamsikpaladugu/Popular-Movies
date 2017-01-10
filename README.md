@@ -1,16 +1,16 @@
 ## Popular Movies
+An app that allows users to discover the highest rated and most popular movies. which I made it from scratch for Udacity's Android Developer Nanodegree.
 
 
 
 ##Configuration
-
+This app uses The [themoviedb.org](https://www.themoviedb.org/documentation/api) API to retrieve movies. You must provide your own API key and place it in Globels.java class
 
 
 ##Screens
 
 <img src="https://cloud.githubusercontent.com/assets/15227330/18586812/40db15e2-7c3c-11e6-8eb3-4b34db54cf69.png" width="437" height="750" />
 <img src="https://cloud.githubusercontent.com/assets/15227330/18590530/d292a620-7c4c-11e6-9f31-93fa4dbf8be8.png" width="437" height="750" />
-
 
 <img src="https://cloud.githubusercontent.com/assets/15227330/18590598/1faa3aae-7c4d-11e6-8c2a-2fc9f9eb84c6.png" width="498" height="750" />
 
